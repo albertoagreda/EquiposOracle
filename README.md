@@ -1,86 +1,119 @@
 
-PROYECTO: Gestión de Equipos de Fútbol con Oracle y Java
-Autor: Alberto Agredano
+⚽ Gestión de Equipos de Fútbol con Oracle y Java  
+### Práctica de Base de Datos – Orientación a Objetos  
+**Autor:** Alberto Agredano
 
-====================================
-DESCRIPCIÓN GENERAL
-====================================
-Este proyecto consiste en una aplicación Java que se conecta a una base de datos Oracle
-y gestiona información de equipos de fútbol a partir de archivos XML.
+Aplicación desarrollada en Java que permite gestionar equipos de fútbol a partir de
+archivos XML, almacenando la información en una base de datos Oracle mediante el uso
+de tipos objeto y tablas orientadas a objetos.
 
-Cada archivo XML representa un equipo y cada jugador se almacena en la base de datos
-utilizando un tipo objeto de Oracle. El programa se maneja mediante un menú por consola.
+---
 
-====================================
-TECNOLOGÍAS UTILIZADAS
-====================================
-- Java (IntelliJ IDEA)
-- Oracle Database (XE)
-- Oracle SQL Developer
-- JDBC (ojdbc)
-- XML (DOM)
+## 📌 Descripción General
 
-====================================
-ESTRUCTURA DEL PROYECTO
-====================================
-- src/
-  - ConexionOracle.java  -> Lógica de conexión, base de datos y XML
-  - Main.java            -> Menú principal y ejecución del programa
+El proyecto permite leer archivos XML que representan equipos de fútbol y almacenar
+sus jugadores en Oracle. Cada jugador se guarda como un objeto y cada equipo dispone
+de su propia tabla en la base de datos.
 
-====================================
-BASE DE DATOS
-====================================
-Se utiliza un TYPE de Oracle llamado JUGADOR_T con los campos:
-- nombre
-- dorsal
-- demarcacion
-- nacimiento
+La aplicación se ejecuta desde consola y se controla mediante un menú interactivo,
+facilitando la creación de tablas, la carga de datos y la visualización de la información.
 
-Cada equipo se guarda en una tabla distinta creada a partir de este TYPE.
-El nombre de la tabla coincide con el nombre del archivo XML.
+---
 
-====================================
-FUNCIONAMIENTO DEL PROGRAMA
-====================================
-Al ejecutar el programa se muestra un menú con las siguientes opciones:
+## ✥ Funcionalidades
 
-1. Recorrer directorio y crear tablas
-   - Lee una carpeta con archivos XML
-   - Crea una tabla por cada equipo
+- Creación de un tipo objeto `JUGADOR_T` en Oracle  
+- Creación automática de una tabla por cada equipo  
+- Lectura de archivos XML mediante DOM  
+- Inserción de jugadores en la base de datos  
+- Visualización de los jugadores de un equipo  
+- Eliminación de todas las tablas creadas  
+- Menú interactivo por consola  
 
-2. Rellenar equipo desde XML
-   - El usuario elige un equipo
-   - Se leen los jugadores del XML y se insertan en Oracle
+---
 
-3. Mostrar equipo
-   - Muestra por pantalla los jugadores del equipo seleccionado
+## 🧱 Diseño de la Base de Datos
 
-4. Eliminar todas las tablas
-   - Borra las tablas creadas por el programa
+### Tipo Objeto: JUGADOR_T
+El tipo `JUGADOR_T` representa a un jugador de fútbol y contiene los siguientes atributos:
 
-5. Salir
-   - Cierra la conexión y termina la ejecución
+- nombre → Nombre del jugador  
+- dorsal → Número del jugador  
+- demarcacion → Posición en el campo  
+- nacimiento → Fecha de nacimiento  
 
-====================================
-CÓMO USAR EL PROYECTO
-====================================
-1. Abrir el proyecto en IntelliJ IDEA
-2. Asegurarse de tener el driver ojdbc añadido al proyecto
-3. Configurar correctamente el usuario y contraseña de Oracle
-4. Ejecutar la clase Main
-5. Seguir las opciones del menú
+Cada tabla de equipo se crea utilizando este tipo objeto, lo que permite trabajar con
+orientación a objetos dentro de Oracle.
 
-====================================
-COMPROBACIÓN DE DATOS
-====================================
-Los datos pueden comprobarse desde Oracle SQL Developer utilizando sentencias SELECT
-sobre las tablas creadas (por ejemplo: SELECT * FROM BARCELONA;).
+---
 
-====================================
-OBJETIVO DE LA PRÁCTICA
-====================================
-- Trabajar con tipos objeto en Oracle
-- Conectar Java con Oracle mediante JDBC
-- Leer y procesar archivos XML
-- Implementar un menú interactivo
-- Aplicar una estructura de proyecto clara y organizada
+## 🧠 Funcionamiento del Programa
+
+Al iniciar la aplicación se muestra un menú con las siguientes opciones:
+
+1️⃣ Recorrer directorio y crear tablas  
+- Lee una carpeta con archivos XML  
+- Crea una tabla por cada equipo  
+
+2️⃣ Rellenar equipo desde XML  
+- El usuario selecciona un equipo  
+- Se cargan automáticamente todos sus jugadores  
+
+3️⃣ Mostrar equipo  
+- Muestra por consola los jugadores almacenados  
+
+4️⃣ Eliminar todas las tablas  
+- Borra todas las tablas creadas por el programa  
+
+5️⃣ Salir  
+- Cierra la conexión y finaliza la aplicación  
+
+---
+
+## 🔗 Lectura de Archivos XML
+
+Los archivos XML se procesan utilizando la API DOM de Java. El programa recorre cada
+nodo `<jugador>` y extrae sus datos para crear los objetos correspondientes en Oracle.
+
+Esta técnica permite una lectura clara y estructurada de la información.
+
+---
+
+## 🔧 Conexión con Oracle
+
+La conexión con la base de datos se realiza mediante JDBC, utilizando el driver `ojdbc`.
+Todas las operaciones de base de datos están centralizadas en la clase `ConexionOracle`.
+
+---
+
+## 📁 Estructura del Proyecto
+
+EquiposOracle/
+ ├── src/
+ │   ├── ConexionOracle.java   → Conexión y lógica de base de datos  
+ │   └── Main.java             → Menú principal del programa  
+ └── README.txt
+
+---
+
+## 🧪 Pruebas Realizadas
+
+- Creación de tablas desde una carpeta de XML  
+- Inserción correcta de jugadores  
+- Visualización de equipos completos  
+- Comprobación de datos desde SQL Developer  
+
+---
+
+## ✔️ Buenas Prácticas Aplicadas
+
+- Uso de tipos objeto en Oracle  
+- Código organizado por responsabilidades  
+- Uso de PreparedStatement  
+- Control de errores básicos  
+- Nombres claros y descriptivos  
+
+---
+
+## 📄 Autor
+**Alberto Agredano**
